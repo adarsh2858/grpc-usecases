@@ -13,7 +13,7 @@ const (
 	port = ":3000"
 )
 
-type helloWorld struct {
+type helloServer struct {
 	pb.GreetServiceServer
 }
 
@@ -24,7 +24,7 @@ func main() {
 	}
 
 	g := grpc.NewServer()
-	pb.RegisterGreetServiceServer(g, &helloWorld{})
+	pb.RegisterGreetServiceServer(g, &helloServer{})
 	log.Printf("Server started at %v", l.Addr())
 
 	if err := g.Serve(l); err != nil {
